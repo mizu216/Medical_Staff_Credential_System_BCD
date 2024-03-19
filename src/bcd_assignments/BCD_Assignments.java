@@ -15,7 +15,11 @@ public class BCD_Assignments {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        System.out.println("hi");
+        System.out.println("hi, hi");
+        System.out.println("hi, hi");
+        System.out.println("hello world");
+        
+        
     }
     
 }
