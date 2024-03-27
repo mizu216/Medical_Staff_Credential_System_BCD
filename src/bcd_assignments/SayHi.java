@@ -12,5 +12,8 @@ package bcd_assignments;
 public class SayHi {
     public void sayhi(){
         System.out.println("hello");
+        System.out.println("hello");
+        System.out.println("hello");
+
     }
 }
