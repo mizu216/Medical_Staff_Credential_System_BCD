@@ -25,7 +25,7 @@ public class MainMenuPage implements ActionListener{
         }
         
         catch(Exception ex){
-            JOptionPane.showMessageDialog(x,"Error!!! Please Try Again");
+            JOptionPane.showMessageDialog(x,"Error Loading!!! Please Try Again");
             ex.printStackTrace();
         }
     }

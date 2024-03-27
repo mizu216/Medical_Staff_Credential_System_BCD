@@ -20,7 +20,7 @@ public class StaffLoginPage implements ActionListener{
         }
         
         catch(Exception ex){
-            JOptionPane.showMessageDialog(x,"Invalid input!!!");
+            JOptionPane.showMessageDialog(x,"Error Loading!!! Please Try Again");
             ex.printStackTrace();
         }
         
