@@ -1,6 +1,5 @@
 package bcd_assignments;
 
-import java.rmi.RemoteException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -50,7 +49,8 @@ public class Database {
     
     public static boolean staffLogin(String username, String password){
         try{
-            Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/medical_staff_system", "root", "root");
+            Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/medical_staff_system","abc","abc");
+            System.out.println("Database Connected");
             PreparedStatement pstmt = conn.prepareStatement("SELECT Password FROM Staff_Table WHERE Username = ?");
             pstmt.setString(1, username);
 
