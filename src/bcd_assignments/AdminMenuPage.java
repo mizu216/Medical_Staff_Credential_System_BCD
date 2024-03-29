@@ -13,6 +13,7 @@ public class AdminMenuPage implements ActionListener{
         try{
             if(e.getSource()==register){
                 x.setVisible(false);
+                Main.adminRegisterStaffPage.getJFrame().setVisible(true);
             }
             
             else if (e.getSource()==view){

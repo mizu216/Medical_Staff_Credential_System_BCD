@@ -11,9 +11,21 @@ public class AdminLoginPage implements ActionListener{
     public void actionPerformed(ActionEvent e){
         try{
             if(e.getSource()==login){
-            
+                String username = usernameInput.getText();
+                String password = passwordInput.getText();
+                usernameInput.setText("");
+                passwordInput.setText("");
+                if ("admin123".equals(username) && "admin123".equals(password)){
+                   x.setVisible(false);
+                    Main.adminMenuPage.getJFrame().setVisible(true); 
+                }
+                else{
+                    JOptionPane.showMessageDialog(x,"Invalid Username and Password!!!");
+                }
             }
             else if(e.getSource()==back){
+                usernameInput.setText("");
+                passwordInput.setText("");
                 x.setVisible(false);
                 Main.mainMenuPage.getJFrame().setVisible(true);
             }
@@ -67,8 +79,8 @@ public class AdminLoginPage implements ActionListener{
         back = new Button("Back");
         login.addActionListener(this);
         back.addActionListener(this);
-        p5.add(login);
-        p6.add(back);
+        p5.add(back);
+        p6.add(login);
         p7.add(p5);
         p7.add(p6);
 
