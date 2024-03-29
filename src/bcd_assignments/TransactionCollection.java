@@ -1,4 +1,4 @@
-package bloackchain;
+package bcd_assignments;
 
 import java.io.Serializable;
 import java.util.ArrayList;
