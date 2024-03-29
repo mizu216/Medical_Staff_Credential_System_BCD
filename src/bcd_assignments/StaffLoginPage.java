@@ -3,7 +3,6 @@ package bcd_assignments;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.rmi.Naming;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 public class StaffLoginPage implements ActionListener{
@@ -11,7 +10,19 @@ public class StaffLoginPage implements ActionListener{
     public void actionPerformed(ActionEvent e){
         try{
             if(e.getSource()==login){
-            
+                String username = usernameInput.getText();
+                String password = passwordInput.getText();
+                usernameInput.setText("");
+                passwordInput.setText("");
+                if (Database.staffLogin(username,password) == true){
+                    Main.loginUser = username;
+                    x.setVisible(false);
+                    Main.staffMenuPage.getJFrame().setVisible(true); 
+                }
+                else{
+                    JOptionPane.showMessageDialog(x,"Invalid Username and Password!!!");
+                }
+                
             }
             else if(e.getSource()==back){
                 x.setVisible(false);
@@ -22,9 +33,9 @@ public class StaffLoginPage implements ActionListener{
         catch(Exception ex){
             JOptionPane.showMessageDialog(x,"Error Loading!!! Please Try Again");
             ex.printStackTrace();
-        }
-        
+        }   
     }
+     
     public JFrame getJFrame(){
         return x;
     }
@@ -67,8 +78,8 @@ public class StaffLoginPage implements ActionListener{
         back = new Button("Back");
         login.addActionListener(this);
         back.addActionListener(this);
-        p5.add(login);
-        p6.add(back);
+        p5.add(back);
+        p6.add(login);
         p7.add(p5);
         p7.add(p6);
 
