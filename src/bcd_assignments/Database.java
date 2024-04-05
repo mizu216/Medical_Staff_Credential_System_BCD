@@ -72,4 +72,35 @@ public class Database {
         }
         return false;
     }
+    
+    public static boolean staffUpdatePassword(String username, String oldPassword, String newPassword){
+        try{
+            Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/medical_staff_system", "abc", "abc");
+            PreparedStatement pstmt = conn.prepareStatement("SELECT Password FROM Staff_Table WHERE Username = ?");
+            pstmt.setString(1, username);
+
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                String storedPassword = rs.getString("Password");
+                if (storedPassword.equals(oldPassword)) {
+                    pstmt = conn.prepareStatement("UPDATE Staff_Table SET Password = ? WHERE Username = ?");
+                    pstmt.setString(1, newPassword);
+                    pstmt.setString(2, username);
+                    int executeUpdate = pstmt.executeUpdate();
+                    if (executeUpdate > 0) {
+                        return true;//sucess
+                    } else {
+                        return false;//errorr modify,try again
+                    }
+                }
+            }
+            rs.close();
+            pstmt.close();
+            conn.close(); 
+        }
+        catch(SQLException e){
+            e.printStackTrace();
+        }
+        return false;
+    }
 }

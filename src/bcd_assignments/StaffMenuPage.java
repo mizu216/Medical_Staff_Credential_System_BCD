@@ -3,8 +3,6 @@ package bcd_assignments;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.rmi.Naming;
-import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 public class StaffMenuPage implements ActionListener{
@@ -13,6 +11,7 @@ public class StaffMenuPage implements ActionListener{
         try{
             if(e.getSource()==update){
                 x.setVisible(false);
+                Main.staffUpdatePasswordPage.getJFrame().setVisible(true);
             }
             
             else if(e.getSource()==submit){

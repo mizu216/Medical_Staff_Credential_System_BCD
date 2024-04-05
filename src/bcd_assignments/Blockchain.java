@@ -1,4 +1,4 @@
-package bloackchain;
+package bcd_assignments;
 
 import java.security.MessageDigest;
 import java.security.SecureRandom;

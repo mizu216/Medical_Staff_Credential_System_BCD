@@ -9,10 +9,11 @@ public class Block implements Serializable {
 	TransactionCollection tc;
 	private static final long serialVersionUID = 1L;
 	
-	public Block(String previousHash) {
+	public Block(String previousHash, String merkleRoot) {
 		header = new Header();
 		header.setTimeStamp(new Timestamp(System.currentTimeMillis()).getTime());
 		header.setPreviousHash(previousHash);
+		header.setMerkleRoot(merkleRoot);
 		String info = String.join("+", Integer.toString(header.getIndex()), 
 				Long.toString(header.getTimeStamp()), header.getPreviousHash());
 		String blockHash  = Blockchain.sha256(info);
@@ -37,6 +38,7 @@ public class Block implements Serializable {
 		String currentHash;
 		String previousHash;
 		long timeStamp;
+		String merkleRoot;
 		private static final long serialVersionUID = 1L;
 		
 		public int getIndex() {
@@ -63,10 +65,13 @@ public class Block implements Serializable {
 		public void setTimeStamp(long timeStamp) {
 			this.timeStamp = timeStamp;
 		}
+		public void setMerkleRoot(String merkleRoot) {
+			this.merkleRoot = merkleRoot;
+		}
 		@Override
 		public String toString() {
 			return "Header [index=" + index + ", currentHash=" + currentHash + ", previousHash=" + previousHash
-					+ ", timeStamp=" + timeStamp + "]";
+					+ ", timeStamp=" + timeStamp + ", merkleRoot=" + merkleRoot + "]";
 		}
 		
 		
