@@ -9,11 +9,19 @@ import java.awt.Panel;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.PrivateKey;
+import java.security.PublicKey;
 import java.text.SimpleDateFormat;
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
+
+import bloackchain.Asymmetric;
+import bloackchain.BlockChainn;
+import bloackchain.KeyAccess;
+import bloackchain.MyKeyPair;
+import bloackchain.MySignature;
 public class StaffSubmitCredentialPage implements ActionListener{
     
     @Override
@@ -42,6 +50,27 @@ public class StaffSubmitCredentialPage implements ActionListener{
                     JOptionPane.showMessageDialog(x,"Please select a status!!!");
                 }
                 else{
+                	MyKeyPair.create();
+            		PublicKey publicKey = MyKeyPair.getPublicKey();
+            		PrivateKey privateKey = MyKeyPair.getPrivateKey();
+            		
+            		MySignature sig = new MySignature();
+            		
+            		String text = "simple digital signature demo";
+            		
+            		byte[] s = sig.getSignature(text, privateKey);
+            		
+            		
+            		String data = credentialNo + "," + credentialType + status + "," + ceDueDate + "," + firstIssueDate + "," + lastIssueDate + "," + expirationDate;
+            		
+            		Asymmetric a = new Asymmetric();
+            		
+            		PublicKey publicKeyy = KeyAccess.getPublicKey("MyKeyPair/PublicKey");
+            		PrivateKey privateKeyy = KeyAccess.getPrivateKey("MyKeyPair/PrivateKey");
+            		
+            		String encrypted = a.encrypt(data, publicKeyy);
+            		
+            		BlockChainn.tester(encrypted, s);
                 
                 }
             }

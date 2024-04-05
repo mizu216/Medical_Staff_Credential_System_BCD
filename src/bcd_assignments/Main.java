@@ -33,5 +33,6 @@ public class Main {
         staffSubmitCredentialPage = new StaffSubmitCredentialPage();
         staffViewPersonalCredentialPage = new StaffViewPersonalCredentialPage();
         mainMenuPage = new MainMenuPage();
+        
     }
 }

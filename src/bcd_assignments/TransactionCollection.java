@@ -19,6 +19,7 @@ public class TransactionCollection implements Serializable{
 		String res = "";
 		for(String credentials: tranxList) {
 			res = res + credentials + ",";
+			
 		}
 		return res;
 	}

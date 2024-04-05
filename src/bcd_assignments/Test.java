@@ -32,9 +32,9 @@ public class Test {
 //		b1.setTransaction(tranxList);
 //		System.out.println(b1);
 //		
-		BlockChainn b = new BlockChainn("test");
-		b.tester();
-		
+//		BlockChainn b = new BlockChainn("test");
+//		b.tester();
+//		
 		//lab 7
 //		Symmetric sym = new Symmetric();
 //		
@@ -84,15 +84,15 @@ public class Test {
 //		System.out.println("\n\n> Original Content: " + decrypted);
 		
 		//lab 9
-//		PublicKey publicKeyy = KeyAccess.getPublicKey("MyKeyPair/PublicKey");
-//		PrivateKey privateKeyy = KeyAccess.getPrivateKey("MyKeyPair/PrivateKey");
-//		
-//		MySignature sig = new MySignature();
-//		
-//		String text = "simple digital signature demo";
-//		
-//		byte[] s = sig.getSignature(text, privateKeyy);
-//		System.out.println(sig.isTextAndSignatureValid(text, s, publicKeyy));
+		PublicKey publicKeyy = KeyAccess.getPublicKey("MyKeyPair/PublicKey");
+		PrivateKey privateKeyy = KeyAccess.getPrivateKey("MyKeyPair/PrivateKey");
+		
+		MySignature sig = new MySignature();
+		
+		String text = "simple digital signature demo";
+		
+		byte[] s = sig.getSignature(text, privateKeyy);
+		System.out.println(sig.isTextAndSignatureValid(text, s, publicKeyy));
 		
 		//lab10
 //		String line1 = "bob|alice|debit|100";
