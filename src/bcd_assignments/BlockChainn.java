@@ -1,13 +1,21 @@
 package bcd_assignment;
 
+package bcd_assignment;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.security.PrivateKey;
 import java.util.LinkedList;
 
 import com.google.gson.GsonBuilder;
+
+import bloackchain.Asymmetric;
+import bloackchain.Block;
+import bloackchain.KeyAccess;
+import bloackchain.TransactionCollection;
 
 public class BlockChainn {
 	
@@ -73,24 +81,30 @@ public class BlockChainn {
 		System.out.println( chain );
 	}
 	
-	public void tester() {
+	public void tester(String data, byte[] signature) {
 		BlockChainn bc = BlockChainn.getInstance(fileName);
 		if (!new File(masterFolder).exists()) {
 			System.err.println("> creating BlokcChain binary!");
 			new File(masterFolder).mkdir();
 			bc.genesis();
 		}else {
-			String line1 = "bob|alice|debit|100";
-			String line2 = "mick|alice|debit|200";
+			Asymmetric a = new Asymmetric();
+			
+			PrivateKey privateKeyy = KeyAccess.getPrivateKey("MyKeyPair/PrivateKey");
+			String s = a.decrypt(data, privateKeyy);
+			String[] credentials = s.split(",");
 			
 			TransactionCollection tranxLst = new TransactionCollection();
-			tranxLst.add(line1);
-			tranxLst.add(line2);
 			
+			for (String c: credentials) {
+				System.out.println(c);
+				tranxLst.add(c);
+			}
+			String merkleRoot = tranxLst.getMerkleRoot();
 			String previousHash = bc.get().getLast().getHeader().getCurrentHash();
-			Block b1 = new Block(previousHash);
+			Block b1 = new Block(previousHash, merkleRoot);
 			b1.setTransaction(tranxLst);
-			bc.nextBlock(b1);
+			bc.nextBlock(b1, tranxLst);
 			System.out.println("This is b1");
 			System.out.println(b1);
 			bc.distribute();
@@ -101,3 +115,4 @@ public class BlockChainn {
 
 
 }
+

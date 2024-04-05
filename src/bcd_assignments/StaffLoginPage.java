@@ -14,10 +14,15 @@ public class StaffLoginPage implements ActionListener{
                 String password = passwordInput.getText();
                 usernameInput.setText("");
                 passwordInput.setText("");
-                if (Database.staffLogin(username,password) == true){
-                    Main.loginUser = username;
-                    x.setVisible(false);
-                    Main.staffMenuPage.getJFrame().setVisible(true); 
+//                if (Database.staffLogin(username,password) == true){
+//                    Main.loginUser = username;
+//                    x.setVisible(false);
+//                    Main.staffMenuPage.getJFrame().setVisible(true); 
+//                }
+                if (username.equals("jason") && password.equals("abc")) {
+                  Main.loginUser = username;
+                  x.setVisible(false);
+                  Main.staffMenuPage.getJFrame().setVisible(true); 
                 }
                 else{
                     JOptionPane.showMessageDialog(x,"Invalid Username and Password!!!");
