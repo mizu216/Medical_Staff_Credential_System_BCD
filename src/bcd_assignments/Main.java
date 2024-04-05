@@ -16,6 +16,7 @@ public class Main {
     public static AdminViewAllStaffPage adminViewAllStaffPage;
     public static StaffLoginPage staffLoginPage;
     public static StaffMenuPage staffMenuPage;
+    public static StaffUpdatePasswordPage staffUpdatePasswordPage;
     public static StaffSubmitCredentialPage staffSubmitCredentialPage;
     public static StaffViewPersonalCredentialPage staffViewPersonalCredentialPage;
     public static MainMenuPage mainMenuPage;
@@ -30,6 +31,7 @@ public class Main {
         adminViewAllStaffPage = new AdminViewAllStaffPage();
         staffLoginPage = new StaffLoginPage();
         staffMenuPage = new StaffMenuPage();
+        staffUpdatePasswordPage = new StaffUpdatePasswordPage();
         staffSubmitCredentialPage = new StaffSubmitCredentialPage();
         staffViewPersonalCredentialPage = new StaffViewPersonalCredentialPage();
         mainMenuPage = new MainMenuPage();
